@@ -13,10 +13,23 @@ class Notes_app_body extends StatelessWidget {
         children: [
           const SizedBox(height: 50),
           custom_appBar(),
-          const SizedBox(height: 24),
-          NoteItem(),
+          const SizedBox(height: 5),
+          Expanded(child: NoteItemList()),
         ],
       ),
+    );
+  }
+}
+
+class NoteItemList extends StatelessWidget {
+  const NoteItemList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemBuilder: (BuildContext context, int index) {
+        return NoteItem();
+      },
     );
   }
 }
