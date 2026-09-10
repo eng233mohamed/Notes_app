@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/Note_item.dart';
 import 'package:notes_app/widgets/custom_appBar.dart';
+import 'package:notes_app/widgets/listitem.dart';
 
 class Notes_app_body extends StatelessWidget {
   const Notes_app_body({super.key});
@@ -17,19 +18,6 @@ class Notes_app_body extends StatelessWidget {
           Expanded(child: NoteItemList()),
         ],
       ),
-    );
-  }
-}
-
-class NoteItemList extends StatelessWidget {
-  const NoteItemList({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (BuildContext context, int index) {
-        return NoteItem();
-      },
     );
   }
 }
