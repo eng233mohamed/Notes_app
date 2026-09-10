@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/views/Home_Page.dart';
 
 void main() {
-  runApp(const Notes_APP());
+  runApp(const NotesApp());
 }
 
-class Notes_APP extends StatelessWidget {
-  const Notes_APP({super.key});
+class NotesApp extends StatelessWidget {
+  const NotesApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Home_Page());
+    return MaterialApp(
+      theme: ThemeData(brightness: Brightness.dark),
+      home: const HomePage(),
+    );
   }
 }

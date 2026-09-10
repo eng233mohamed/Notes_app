@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/widgets/notesappbody.dart';
 
-class Home_Page extends StatelessWidget {
-  const Home_Page({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    ThemeData(brightness: Brightness.dark);
-    return Scaffold();
+    return const Scaffold(body: Notes_app_body());
   }
 }
