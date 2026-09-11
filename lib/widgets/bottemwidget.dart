@@ -9,7 +9,7 @@ class CustomBottom extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 14),
       child: Container(
-        width: MediaQuery.of(context).size.width,
+        width: double.infinity,
         height: 50,
         decoration: BoxDecoration(
           color: kprimaryColor,
