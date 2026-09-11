@@ -22,7 +22,10 @@ class HomePage extends StatelessWidget {
         child: Icon(Icons.add, color: Colors.black),
       ),
 
-      body: const Notes_app_body(),
+      body: Padding(
+        padding: const EdgeInsets.only(bottom: 24),
+        child: const Notes_app_body(),
+      ),
     );
   }
 }
