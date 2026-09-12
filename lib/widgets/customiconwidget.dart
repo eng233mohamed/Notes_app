@@ -13,7 +13,10 @@ class CustomICon extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: Center(
-        child: IconButton(onPressed: () {}, icon: Icon(icon)),
+        child: IconButton(
+          onPressed: () {},
+          icon: Icon(icon, color: Colors.white),
+        ),
       ),
     );
   }
