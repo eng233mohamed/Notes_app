@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/addnotes_cubit.dart';
+import 'package:notes_app/cubits/addnotes_states.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/Custom_Textfield.dart';
 import 'package:notes_app/widgets/bottemwidget.dart';
 
@@ -41,8 +45,16 @@ class _FormaddnoteState extends State<Formaddnote> {
           CustomBottom(
             bottemText: 'Add',
             ontap: () {
+              print('object');
               if (formkey.currentState!.validate()) {
                 formkey.currentState!.save();
+                NoteModel note = NoteModel(
+                  title: title!,
+                  subtitle: subtitle!,
+                  date: DateTime.now().toString(),
+                  color: Colors.blue.value,
+                );
+                BlocProvider.of<AddNoteCubit>(context).addnotemethod(note);
               } else {
                 setState(() {
                   autovalidateMode = AutovalidateMode.always;

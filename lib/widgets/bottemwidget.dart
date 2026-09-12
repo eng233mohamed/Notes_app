@@ -7,10 +7,10 @@ class CustomBottom extends StatelessWidget {
   final void Function()? ontap;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 14),
-      child: GestureDetector(
-        onTap: ontap,
+    return GestureDetector(
+      onTap: ontap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 14),
         child: Container(
           width: double.infinity,
           height: 50,
@@ -21,7 +21,7 @@ class CustomBottom extends StatelessWidget {
           child: Center(
             child: Text(
               bottemText,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
