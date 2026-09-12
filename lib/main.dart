@@ -4,7 +4,6 @@ import 'package:notes_app/helper/conests.dart';
 import 'package:notes_app/views/Home_Page.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
 
   await Hive.openBox(knotesbox);

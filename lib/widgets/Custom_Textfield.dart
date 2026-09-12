@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/helper/conests.dart';
 
 class CustomTextfield extends StatelessWidget {
-  const CustomTextfield({super.key, required this.hint, this.maxline = 1});
-
+  const CustomTextfield({
+    super.key,
+    required this.hint,
+    this.maxline = 1,
+    this.onSaved,
+  });
+  final Function(String?)? onSaved;
   OutlineInputBorder builderBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
@@ -18,7 +23,15 @@ class CustomTextfield extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 14),
-      child: TextField(
+      child: TextFormField(
+        validator: (value) {
+          if (value?.isEmpty ?? true) {
+            return 'field is required ';
+          } else {
+            return null;
+          }
+        },
+        onSaved: onSaved,
         maxLines: maxline,
         cursorColor: kprimaryColor,
         decoration: InputDecoration(

@@ -8,17 +8,58 @@ class AddNote extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return SingleChildScrollView(child: Formaddnote());
+  }
+}
+
+class Formaddnote extends StatefulWidget {
+  const Formaddnote({super.key});
+
+  @override
+  State<Formaddnote> createState() => _FormaddnoteState();
+}
+
+class _FormaddnoteState extends State<Formaddnote> {
+  final GlobalKey<FormState> formkey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  String? title, subtitle;
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formkey,
+      autovalidateMode: autovalidateMode,
       child: Column(
-        children: const [
+        children: [
           SizedBox(height: 30),
 
-          CustomTextfield(hint: 'title'),
+          CustomTextfield(
+            hint: 'title',
+            onSaved: (value) {
+              title = value;
+            },
+          ),
           SizedBox(height: 24),
-          CustomTextfield(hint: 'content', maxline: 5),
+          CustomTextfield(
+            hint: 'content',
+            maxline: 5,
+            onSaved: (value) {
+              subtitle = value;
+            },
+          ),
           SizedBox(height: 60),
 
-          CustomBottom(bottemText: 'Add'),
+          CustomBottom(
+            bottemText: 'Add',
+            ontap: () {
+              if (formkey.currentState!.validate()) {
+                formkey.currentState!.save();
+              } else {
+                setState(() {
+                  autovalidateMode = AutovalidateMode.always;
+                });
+              }
+            },
+          ),
           SizedBox(height: 30),
         ],
       ),
