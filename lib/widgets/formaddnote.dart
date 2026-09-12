@@ -42,24 +42,29 @@ class _FormaddnoteState extends State<Formaddnote> {
           ),
           SizedBox(height: 60),
 
-          CustomBottom(
-            bottemText: 'Add',
-            ontap: () {
-              print('object');
-              if (formkey.currentState!.validate()) {
-                formkey.currentState!.save();
-                NoteModel note = NoteModel(
-                  title: title!,
-                  subtitle: subtitle!,
-                  date: DateTime.now().toString(),
-                  color: Colors.blue.value,
-                );
-                BlocProvider.of<AddNoteCubit>(context).addnotemethod(note);
-              } else {
-                setState(() {
-                  autovalidateMode = AutovalidateMode.always;
-                });
-              }
+          BlocBuilder<AddNoteCubit, AddNoteState>(
+            builder: (context, state) {
+              return CustomBottom(
+                bottemText: 'Add',
+                isLoading: state is AddNoteLoading,
+                ontap: () {
+                  print('object');
+                  if (formkey.currentState!.validate()) {
+                    formkey.currentState!.save();
+                    NoteModel note = NoteModel(
+                      title: title!,
+                      subtitle: subtitle!,
+                      date: DateTime.now().toString(),
+                      color: Colors.blue.value,
+                    );
+                    BlocProvider.of<AddNoteCubit>(context).addnotemethod(note);
+                  } else {
+                    setState(() {
+                      autovalidateMode = AutovalidateMode.always;
+                    });
+                  }
+                },
+              );
             },
           ),
           SizedBox(height: 30),
