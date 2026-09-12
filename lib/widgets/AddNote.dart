@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes_app/cubits/addnotes_cubit.dart';
-import 'package:notes_app/cubits/addnotes_states.dart';
+import 'package:notes_app/cubits/cubits/addnotes_cubit.dart';
+import 'package:notes_app/cubits/cubits/addnotes_states.dart';
 
 import 'package:notes_app/widgets/formaddnote.dart';
 
@@ -25,7 +25,11 @@ class AddNote extends StatelessWidget {
           return AbsorbPointer(
             absorbing: state is AddNoteLoading ? true : false,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.only(
+                left: 16,
+                right: 16,
+                bottom: MediaQuery.viewInsetsOf(context).bottom,
+              ),
               child: SingleChildScrollView(child: Formaddnote()),
             ),
           );
