@@ -1,5 +1,3 @@
-import 'addnotes_states.dart';
-
 abstract class AddNoteState {}
 
 class AddNoteInitial extends AddNoteState {}
